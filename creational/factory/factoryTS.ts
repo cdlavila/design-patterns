@@ -34,7 +34,7 @@
  * Base product class
  */
 interface BaseCar {
-  showCost(): void;
+    showCost(): void;
 }
 
 /** STEP 2

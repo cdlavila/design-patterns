@@ -14,7 +14,7 @@ interface Builder {
  * variations of Builders, implemented differently.
  */
 class ConcreteBuilder1 implements Builder {
-    private product: Product1;
+    private product!: Product1;
 
     /**
      * A fresh builder instance should contain a blank product object, which is
@@ -58,8 +58,8 @@ class ConcreteBuilder1 implements Builder {
      * client code before disposing of the previous result.
      */
     public getProduct(): Product1 {
-        const result = this.product;
-        this.reset();
+        const result: Product1 = this.product;
+        this.reset(); // reset builder, it is SUPER IMPORTANT!
         return result;
     }
 }
@@ -75,8 +75,6 @@ class ConcreteBuilder1 implements Builder {
 class Product1 {
     public parts: string[] = [];
 
-    constructor() { }
-
     public listParts(): void {
         console.log(`Product parts: ${this.parts.join(', ')}\n`);
     }
@@ -89,7 +87,7 @@ class Product1 {
  * optional, since the client can control builders directly.
  */
 class Director {
-    private builder: Builder;
+    private builder!: Builder;
 
     /**
      * The Director works with any builder instance that the client code passes
@@ -137,6 +135,8 @@ function clientCode(director: Director) {
     builder.producePartA();
     builder.producePartC();
     builder.getProduct().listParts();
+
+    console.log('Remember that all outputs are different, due to the reset() method is called after each getProduct() call.');
 }
 
 const director = new Director();
