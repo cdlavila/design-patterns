@@ -34,7 +34,7 @@
  * Base product class
  */
 class Product {
-  showCost() {
+  operation() {
     throw new Error('Method not implemented!'); // Imitate abstract method
   }
 }
@@ -44,15 +44,15 @@ class Product {
  */
 class ConcreteProduct1 extends Product {
   /** @override showCost() method */
-  showCost() {
-    console.log('[ConcreteProduct1] Car Cost: 300,000 USD');
+  operation() {
+    console.log('[ConcreteProduct1] operation...');
   }
 }
 
 class ConcreteProduct2 extends Product {
   /** @override showCost() method */
-  showCost() {
-    console.log('[ConcreteProduct2] Car Cost: 100,000 USD');
+  operation() {
+    console.log('[ConcreteProduct2] Operation...');
   }
 }
 
@@ -95,8 +95,8 @@ class ConcreteProduct2Factory extends ProductFactory {
 function appFactory(factory) {
   if (!factory) throw new Error('Factory not provided!');
 
-  const car = factory.createProduct();
-  car.showCost();
+  const product = factory.createProduct();
+  product.operation();
 }
 
 
