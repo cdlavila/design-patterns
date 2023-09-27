@@ -57,7 +57,7 @@ class RhinoCar implements BaseCar {
 /** STEP 3
  * Base factory class
  */
-interface CarFactory {
+interface CarFacctory {
     createCar(): BaseCar;
 }
 
