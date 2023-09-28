@@ -1,4 +1,23 @@
 /**
+ * It makes sense to use the Builder pattern only when your products are quite
+ * complex and require extensive configuration.
+ *
+ * Unlike in other creational patterns, different concrete builders can produce
+ * unrelated products.
+ * In other words, the results of various builders may not
+ * always follow the same interface.
+ */
+class Product1 {
+  constructor() {
+    this.parts = [];
+  }
+
+  listParts() {
+    console.log(`Product parts: ${this.parts.join(', ')}\n`);
+  }
+}
+
+/**
  * The Builder interface specifies methods for creating the different parts of
  * the Product objects.
  */
@@ -62,24 +81,6 @@ class ConcreteBuilder1 extends Builder {
     const result = this.product;
     this.reset();  // reset builder, it is SUPER IMPORTANT!
     return result;
-  }
-}
-
-/**
- * It makes sense to use the Builder pattern only when your products are quite
- * complex and require extensive configuration.
- *
- * Unlike in other creational patterns, different concrete builders can produce
- * unrelated products. In other words, results of various builders may not
- * always follow the same interface.
- */
-class Product1 {
-  constructor() {
-    this.parts = [];
-  }
-
-  listParts() {
-    console.log(`Product parts: ${this.parts.join(', ')}\n`);
   }
 }
 
